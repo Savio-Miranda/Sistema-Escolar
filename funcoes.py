@@ -24,21 +24,24 @@ def adicionar_ao_perfil(dicionario, chave, valor):
     return dicionario
 
 
-def insercao_de_instituicoes(arg_login_do_usuario, arg_instituicoes):
+def insercao_de_instituicoes(arg_login_do_usuario, arg_diretorio):
     lista_de_instituicoes = []
 
     afirmacao = True
     while afirmacao:
         instituicao_atual = input("Digite o nome da INSTITUIÇÃO em que leciona:\n-> ")
-        var_auxiliar = insercao_de_turmas_materias(instituicao_atual)
-        lista_de_instituicoes.append({instituicao_atual: {"turmas": var_auxiliar}})
+
+        lista_de_turmas_e_materias = insercao_de_turmas_materias(instituicao_atual)
+
+        dict_de_instituicoes = {instituicao_atual: {"turmas": lista_de_turmas_e_materias}}
+        inserir_em_json(arg_diretorio, dict_de_instituicoes)
+
+        lista_de_instituicoes.append(dict_de_instituicoes)
+
         negacao = input('Digite "S" para interromper a inserção de INSTITUIÇÕES ou qualquer tecla para continuar: ')
         if negacao == 'S':
             break
-    adicionar_ao_perfil(arg_login_do_usuario, "Instituicoes_do_professor(a)", lista_de_instituicoes)
-    adicionar_ao_perfil(arg_instituicoes, "Instituicoes", lista_de_instituicoes)
-
-    return arg_login_do_usuario
+    adicionar_ao_perfil(arg_login_do_usuario, "Instituicoes", lista_de_instituicoes)
 
 
 def insercao_de_turmas_materias(arg_instituicao_atual):
