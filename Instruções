@@ -1,0 +1,24 @@
+"""
+    INSTRUÇÕES:
+
+    1 - Fazer um banco de dados com login e senha para professores e alunos. (X)
+
+    2 - Cada professor tem acesso a edição de dados, como por exemplo:
+        2.1 - definição de matéria escolhida (podendo ser mais de uma); (X)
+        2.2 - adição/remoção de escolas; (X)
+        2.3 - adição/remoção de turmas; (X)
+        2.4 - adição/remoção de quantidade de alunos na turma; (X)
+        2.5 - adição/remoção de cada aluno na turma; (X)
+        2.6 - adição/remoção de notas de cada aluno na turma;
+        2.7 - para os tópicos 2.5 e 2.6, só haverá a adição/remoção dos
+        argumentos se existir o cadastro desse aluno no sistema.
+
+    3 - O aluno só pode verificar seus dados pessoais ou públicos, mas nunca
+    poderá editar estes últimos.
+
+    4 - Deverá haver um menu de acesso
+
+    5 - É possível encontrar todos esses dados públicos no sistema se assim
+    for requerido.
+
+"""
