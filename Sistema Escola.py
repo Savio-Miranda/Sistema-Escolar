@@ -1,32 +1,77 @@
 # IMPORTANDO FUNÇÕES
+import json
 import funcoes
 
 diretorio_logins = 'banco_de_dados_logins.json'
 diretorio_instituicoes = 'banco_de_instituicoes.json'
 
-loop = True
-while loop:
+programa_rodando = True
+while programa_rodando:
     if not funcoes.menu():
         login_do_usuario = {}
-        instituicoes = {}
-        materias = {}
-        turmas = {}
-        alunos = {}
+        todas_as_instituicoes = {}
 
         nome = input('Digite seu nome:\n-> ')
         cpf = input('Digite seu cpf:\n-> ')
         senha = input('Digite sua senha:\n-> ')
 
         funcoes.acesso_ou_geracao_de_login(nome, cpf, senha, login_do_usuario)
-        funcoes.insercao_de_instituicoes(login_do_usuario, instituicoes)
+        login_do_usuario.update({'Instituicoes': funcoes.insercao_de_instituicoes()})
+        todas_as_instituicoes.update({'Instituicoes': login_do_usuario['Instituicoes']})
         funcoes.inserir_em_json(diretorio_logins, login_do_usuario)
-        funcoes.inserir_em_json(diretorio_instituicoes, instituicoes)
-
+        funcoes.inserir_em_json(diretorio_instituicoes, todas_as_instituicoes)
+        programa_rodando = False
     else:
-        a = 0
+        logado = True
+        while logado:
+            saida = input('Digite [S] se quiser voltar ou qualquer tecla para prosseguir.\n-> ')
+            if saida == 'S':
+                break
+            acesso = input('Nome de usuário ou CPF:\n-> ')
+            senha = input('Digite sua senha:\n-> ')
 
-    # ENCERRAR PROGRAMA
-    parar_programa = input('Deseja parar? Digite "S" para terminar o programa ou qualquer tecla para revonar.\n-> ')
-    if parar_programa == 'S':
-        break
-    continue
+            with open(diretorio_logins, 'r') as banco_logins:
+                dados = json.load(banco_logins)
+            for contador2 in range(len(dados)):
+                if (acesso in dados[contador2]['nome de usuario'] or acesso in dados[contador2]['CPF']) \
+                        and senha in dados[contador2]['senha']:
+                    print("Acesso concedido!")
+                    interacao = input('| Digite um número para acessar informações no sistema:  |\n'
+                                      '| [1] Instituições em que atua;                          |\n'
+                                      '| [2] Turmas de alocação;                                |\n'
+                                      '| [3] lançar notas;                                      |\n'
+                                      '| Ou no caso de acessar o perfil de um aluno, digite seu |\n'
+                                      '| nome ou CPF.                                           |\n'
+                                      '-> ')
+                    if interacao == '1':
+                        for a in dados[contador2]['Instituicoes']:
+                            for b in range(len(dados[contador2]['Instituicoes'])):
+                                print(dados[contador2]['Instituicoes'][b].keys())
+                    elif interacao == '2':
+                        for a in dados[contador2]['Instituicoes']:
+                            for b in range(len(dados[contador2]['Instituicoes'])):
+                                for c in dados[contador2]['Instituicoes'][b]:
+                                    print(dados[contador2]['Instituicoes'][b][c])
+                    elif interacao == '3':
+                        print('nada feito')
+                    else:
+                        for a in dados[contador2]['Instituicoes']:
+                            for b in range(len(dados[contador2]['Instituicoes'])):
+                                for c in dados[contador2]['Instituicoes'][b]:
+                                    for d in range(len(dados[contador2]['Instituicoes'][b][c])):
+                                        for e in range(len(dados[contador2]['Instituicoes'][b][c][d]['alunos'])):
+                                            if interacao == \
+                                                    dados[contador2]['Instituicoes'][b][c][d]['alunos'][e]['nome']:
+                                                print(dados[contador2]['Instituicoes'][b][c][d]['alunos'][e])
+
+                            break
+                    break
+                else:
+                    print('Nome/CPF ou senha de usuário icorreto(s)')
+
+        terminar = input('Você deseja terminar o programa? [S] para sair.\n-> ')
+        if terminar == 'S':
+            break
+        continue
+
+print('Fim do Programa')

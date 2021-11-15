@@ -19,125 +19,46 @@ def acesso_ou_geracao_de_login(arg_nome, arg_cpf, arg_senha, arg_login_do_usuari
     return login
 
 
-def adicionar_ao_perfil(dicionario, chave, valor):
-    dicionario.update({chave: valor})
-    return dicionario
-
-
-def insercao_de_instituicoes(arg_login_do_usuario, arg_diretorio):
+def insercao_de_instituicoes():
     lista_de_instituicoes = []
-
-    afirmacao = True
-    while afirmacao:
-        instituicao_atual = input("Digite o nome da INSTITUIÇÃO em que leciona:\n-> ")
-
-        lista_de_turmas_e_materias = insercao_de_turmas_materias(instituicao_atual)
-
-        dict_de_instituicoes = {instituicao_atual: {"turmas": lista_de_turmas_e_materias}}
-        inserir_em_json(arg_diretorio, dict_de_instituicoes)
-
-        lista_de_instituicoes.append(dict_de_instituicoes)
-
-        negacao = input('Digite "S" para interromper a inserção de INSTITUIÇÕES ou qualquer tecla para continuar: ')
-        if negacao == 'S':
+    continuar = True
+    while continuar:
+        instituicao = input('Digite sua instituição:\n-> ')
+        lista_de_instituicoes.append({instituicao: insercao_de_turmas()})
+        saida = input('Deseja adicionar mais uma instituição?\n'
+                      'Digite qualquer tecla para continuar ou [N] para sair.\n-> ')
+        if saida == 'N':
             break
-    adicionar_ao_perfil(arg_login_do_usuario, "Instituicoes", lista_de_instituicoes)
+    return lista_de_instituicoes
 
 
-def insercao_de_turmas_materias(arg_instituicao_atual):
-    lista_de_materias = []
-
-    afirmacao = True
-    while afirmacao:
-        lista_de_turmas = []
-
-        materia_atual = input("Digite a MATÉRIA que leciona na escola {}:\n-> ".format(arg_instituicao_atual))
-
-        turma_atual = input("Digite o nome da TURMA em que leciona a matéria {}:\n-> ".format(materia_atual))
-
-        lista_de_turmas.append({turma_atual: {"alunos": insercao_de_alunos(turma_atual)}})
-
-        lista_de_materias.append({"materia": {materia_atual: lista_de_turmas}})
-
-        negacao = input('Digite "S" para interromper a inserção de TURMAS ou qualquer tecla para continuar: ')
-        if negacao == 'S':
+def insercao_de_turmas():
+    lista_de_turmas = []
+    continuar = True
+    while continuar:
+        turma = input('Digite sua turma:\n-> ')
+        materia = input('Digite sua materia:\n-> ')
+        alunos = insercao_de_alunos()
+        lista_de_turmas.append({'turma': turma, 'materia': materia, 'alunos': alunos})
+        saida = input('Deseja adicionar mais uma turma?\n'
+                      'Digite qualquer tecla para continuar ou [N] para sair.\n-> ')
+        if saida == 'N':
             break
+    return lista_de_turmas
 
-    return lista_de_materias
 
-
-def insercao_de_alunos(arg_turma_atual):
+def insercao_de_alunos():
     lista_de_alunos = []
-
-    qtd_de_alunos = int(input("Quantos alunos existem na turma {}?\n-> ".format(arg_turma_atual)))
-
-    print("Digite o nome de cada um deles:")
-
+    qtd_de_alunos = int(input('Digite a quantidade de alunos nesta turma:\n-> '))
     for contador in range(qtd_de_alunos):
-        aluno = {}
-        nome_do_aluno = input("-> ")
-        aluno.update({nome_do_aluno: {"notas": "Sem nota"}})
-        lista_de_alunos.append(aluno)
-
+        nome_de_aluno = input('Nome: ')
+        lista_de_alunos.append({'nome': nome_de_aluno, 'nota': 'S/ nota'})
     return lista_de_alunos
 
 
-def insercao_de_notas():
-    lista_de_notas_da_avaliacao = []
-
-    qtd_de_avaliacoes = int(input("Digite a quantidade de avaliacoes feitas pelo(a) aluno(a) no ano:\n-> "))
-
-    print("Digite as notas do(a) aluno(a): ")
-
-    for contador in range(qtd_de_avaliacoes):
-        nota = int(input("-> "))
-        lista_de_notas_da_avaliacao.append(nota)
-
-    return lista_de_notas_da_avaliacao
-
-
-def inserir_em_json(arg_load_arquivo, arg_login_do_usuario):
-    with open(arg_load_arquivo, "r") as banco:
-        temp = json.load(banco)
-    temp.append(arg_login_do_usuario)
-    with open(arg_load_arquivo, "w") as banco:
-        json.dump(temp, banco, indent=4)
-
-
-def acesso_concedido():
-    print("Acesso concedido!")
-    interacao = input('| Digite um número para acessar informações no sistema:  |\n'
-                      '| [1] Local de cadastro;                                 |\n'
-                      '| [2] Turma de alocação;                                 |\n'
-                      '| [3] lançar notas;                                      |\n'
-                      '| Ou no caso de acessar o perfil de um aluno, digite seu |\n'
-                      '| nome ou CPF.                                           |\n'
-                      '-> ')
-    if interacao == '1':
-        verificar_escola()
-    elif interacao == '2':
-        verificar_turmas()
-    elif interacao == '3':
-        lancar_editar_notas()
-    else:
-        verificar_aluno()
-
-
-def verificar_escola():
-    a = 0
-    return a
-
-
-def verificar_turmas():
-    a = 0
-    return a
-
-
-def verificar_aluno():
-    a = 0
-    return a
-
-
-def lancar_editar_notas():
-    a = 0
-    return a
+def inserir_em_json(arg_load_arquivo, arg_dicionario):
+    with open(arg_load_arquivo, 'r') as banco:
+        arquivo_json = json.load(banco)
+        arquivo_json.append(arg_dicionario)
+    with open(arg_load_arquivo, 'w') as banco:
+        json.dump(arquivo_json, banco, indent=4)

@@ -1,203 +1,87 @@
 [
     {
-        "nome de usuario": "Savio Miranda",
-        "CPF": "04972118237",
-        "senha": "Biancamozinho",
+        "nome de usuario": "Savio",
+        "CPF": "049",
+        "senha": "123",
         "Instituicoes": [
             {
-                "UFPA": {
-                    "turmas": [
-                        {
-                            "materia": {
-                                "Calculo": [
-                                    {
-                                        "C1": {
-                                            "alunos": [
-                                                {
-                                                    "Melissa": {
-                                                        "notas": "Sem nota"
-                                                    }
-                                                },
-                                                {
-                                                    "Adalberto": {
-                                                        "notas": "Sem nota"
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    }
-                                ]
+                "UFPA": [
+                    {
+                        "turma": "C1",
+                        "materia": "Calculo I",
+                        "alunos": [
+                            {
+                                "nome": "Henrique",
+                                "nota": "S/ nota"
+                            },
+                            {
+                                "nome": "Carlos",
+                                "nota": "S/ nota"
+                            },
+                            {
+                                "nome": "Maria",
+                                "nota": "S/ nota"
                             }
-                        },
-                        {
-                            "materia": {
-                                "Ingles": [
-                                    {
-                                        "ING2": {
-                                            "alunos": [
-                                                {
-                                                    "Aroldo": {
-                                                        "notas": "Sem nota"
-                                                    }
-                                                },
-                                                {
-                                                    "Gustavo": {
-                                                        "notas": "Sem nota"
-                                                    }
-                                                },
-                                                {
-                                                    "Jessica": {
-                                                        "notas": "Sem nota"
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    }
-                                ]
+                        ]
+                    },
+                    {
+                        "turma": "ING 2",
+                        "materia": "Ingles 2",
+                        "alunos": [
+                            {
+                                "nome": "Kelly",
+                                "nota": "S/ nota"
                             }
-                        }
-                    ]
-                }
+                        ]
+                    }
+                ]
+            },
+            {
+                "CESUPA": [
+                    {
+                        "turma": "P1",
+                        "materia": "Programacao I",
+                        "alunos": [
+                            {
+                                "nome": "Murilo",
+                                "nota": "S/ nota"
+                            },
+                            {
+                                "nome": "Natanael",
+                                "nota": "S/ nota"
+                            }
+                        ]
+                    }
+                ]
             }
         ]
     },
     {
         "nome de usuario": "Elielson",
-        "CPF": "12345678910",
-        "senha": "Wellenvida",
+        "CPF": "058",
+        "senha": "456",
         "Instituicoes": [
             {
-                "CESUPA": {
-                    "turmas": [
-                        {
-                            "materia": {
-                                "Programacao": [
-                                    {
-                                        "P1": {
-                                            "alunos": [
-                                                {
-                                                    "Renan": {
-                                                        "notas": "Sem nota"
-                                                    }
-                                                },
-                                                {
-                                                    "Alexander": {
-                                                        "notas": "Sem nota"
-                                                    }
-                                                },
-                                                {
-                                                    "Marco": {
-                                                        "notas": "Sem nota"
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    }
-                                ]
+                "CESUPA": [
+                    {
+                        "turma": "P2",
+                        "materia": "Programacao II",
+                        "alunos": [
+                            {
+                                "nome": "Felipe",
+                                "nota": "S/ nota"
+                            },
+                            {
+                                "nome": "Bruna",
+                                "nota": "S/ nota"
+                            },
+                            {
+                                "nome": "Vanessa",
+                                "nota": "S/ nota"
                             }
-                        }
-                    ]
-                }
-            }
-        ]
-    },
-    {
-        "nome de usuario": "Bianca Eloise",
-        "CPF": "12345678911",
-        "senha": "Saviomozao",
-        "Instituicoes": [
-            {
-                "UNAMA": {
-                    "turmas": [
-                        {
-                            "materia": {
-                                "Economia": [
-                                    {
-                                        "ECON3": {
-                                            "alunos": [
-                                                {
-                                                    "Igor": {
-                                                        "notas": "Sem nota"
-                                                    }
-                                                },
-                                                {
-                                                    "Ivan": {
-                                                        "notas": "Sem nota"
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    }
-                                ]
-                            }
-                        }
-                    ]
-                }
-            }
-        ]
-    },
-    {
-        "nome de usuario": "Joao Pedro",
-        "CPF": "12345678900",
-        "senha": "Booze",
-        "Instituicoes": [
-            {
-                "UNAMA": {
-                    "turmas": [
-                        {
-                            "materia": {
-                                "Direito": [
-                                    {
-                                        "D4": {
-                                            "alunos": [
-                                                {
-                                                    "Lorena": {
-                                                        "notas": "Sem nota"
-                                                    }
-                                                },
-                                                {
-                                                    "Abigail": {
-                                                        "notas": "Sem nota"
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    }
-                                ]
-                            }
-                        }
-                    ]
-                }
-            }
-        ]
-    },
-    {
-        "nome de usuario": "Maria",
-        "CPF": "038",
-        "senha": "sansavio",
-        "Instituicoes_do_professor(a)": [
-            {
-                "Sao Vicente de Paula": {
-                    "turmas": [
-                        {
-                            "materia": {
-                                "Tudo": [
-                                    {
-                                        "4 ano": {
-                                            "alunos": [
-                                                {
-                                                    "Gustavo": {
-                                                        "notas": "Sem nota"
-                                                    }
-                                                }
-                                            ]
-                                        }
-                                    }
-                                ]
-                            }
-                        }
-                    ]
-                }
+                        ]
+                    }
+                ]
             }
         ]
     }
