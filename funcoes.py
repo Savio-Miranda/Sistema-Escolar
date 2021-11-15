@@ -62,3 +62,27 @@ def inserir_em_json(arg_load_arquivo, arg_dicionario):
         arquivo_json.append(arg_dicionario)
     with open(arg_load_arquivo, 'w') as banco:
         json.dump(arquivo_json, banco, indent=4)
+
+
+def verificar_escolas(arg_dados, arg_contador):
+    for b in range(len(arg_dados[arg_contador]['Instituicoes'])):
+        instituicoes = arg_dados[arg_contador]['Instituicoes'][b].keys()
+        return print(instituicoes)
+
+
+def verificar_turmas(arg_dados, arg_contador):
+    for a in range(len(arg_dados[arg_contador]['Instituicoes'])):
+        for b in arg_dados[arg_contador]['Instituicoes'][a]:
+            turmas = arg_dados[arg_contador]['Instituicoes'][a][b]
+            return print(turmas)
+
+
+def verificar_alunos(arg_dados, arg_contador, arg_interacao):
+    for a in range(len(arg_dados[arg_contador]['Instituicoes'])):
+        for b in arg_dados[arg_contador]['Instituicoes'][a]:
+            for c in range(len(arg_dados[arg_contador]['Instituicoes'][a][b])):
+                for d in range(len(arg_dados[arg_contador]['Instituicoes'][a][b][c]['alunos'])):
+                    if arg_interacao == arg_dados[arg_contador]['Instituicoes'][a][b][c]['alunos'][d]['nome']:
+                        alunos = arg_dados[arg_contador]['Instituicoes'][a][b][c]['alunos'][d]
+                        return print(alunos)
+    print('Aluno(a) não encontrado(a).')
