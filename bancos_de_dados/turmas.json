@@ -1,0 +1,35 @@
+[
+    {
+        "turma": "Geleia",
+        "instituicao_referente": {
+            "codigo": "15042936",
+            "escola": "EEEF DR PAULO FONTELLES DE LIMA"
+        },
+        "professor(a)": null,
+        "alunos": []
+    },
+    {
+        "turma": "Carpa",
+        "instituicao_referente": {
+            "codigo": "15042936",
+            "escola": "EEEF DR PAULO FONTELLES DE LIMA"
+        },
+        "professor(a)": null,
+        "alunos": [
+            {
+                "nome": "Sergio",
+                "cpf": "123",
+                "notas": []
+            }
+        ]
+    },
+    {
+        "turma": "Carpa",
+        "instituicao_referente": {
+            "codigo": "15042936",
+            "escola": "EEEF DR PAULO FONTELLES DE LIMA"
+        },
+        "professor(a)": null,
+        "alunos": []
+    }
+]

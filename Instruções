@@ -19,6 +19,195 @@
     4 - Deverá haver um menu de acesso (X)
 
     5 - É possível encontrar todos esses dados públicos no sistema se assim
-    for requerido.
+    for requerido. (x)
 
 """
+# class TodosOsMetodos():
+#     def __init__(self, _nome, _cpf, _senha, instituicoes=None, turmas=None, alunos=None):
+#         super().__init__(_nome, _cpf, _senha, instituicoes, turmas, alunos)
+#         self.instituicoes = [] if instituicoes is None else instituicoes
+#         self.turmas = {} if turmas is None else turmas
+#         self.alunos = {} if alunos is None else alunos
+#
+#         # MATRÍCULA DO ALUNO
+#         def inserir_instituicao(self):
+#             arquivo_json = carregar_json(banco_de_escolas)
+#             entrada = input('Digite o nome ou código da escola: ')
+#             entrada = checar_tipo_de_entrada(entrada, 3)
+#
+#             for escola in range(len(arquivo_json)):
+#                 codigo_escola = dict(arquivo_json[escola])
+#                 if (entrada == codigo_escola["codigo"]) or (entrada == codigo_escola["escola"]):
+#                     self.instituicoes.append(codigo_escola)
+#                     return '*** MATRÍCULA REALIZADA COM SUCESSO ***'
+#
+#             return '*** INSTITUIÇÃO INEXISTENTE ***'
+#
+#         # DESMATRICULAR ALUNO
+#         def remover_instituicao(self):
+#             entrada = input('Digite o nome ou código da escola: ')
+#             entrada = checar_tipo_de_entrada(entrada, 3)
+#             for escola in range(len(self.instituicoes)):
+#                 codigo_escola = self.instituicoes[escola]
+#                 if (entrada == codigo_escola["codigo"]) or (entrada == codigo_escola["escola"]):
+#                     self.instituicoes.remove(codigo_escola)
+#
+#                     turmas_pendentes = True
+#                     while turmas_pendentes:
+#                         turmas_pendentes = self.remocao_de_turmas_pendentes(codigo_escola)
+#
+#                     return '*** INSTITUIÇÃO REMOVIDA COM SUCESSO ***'
+#
+#             return '*** INSTITUIÇÃO INEXISTENTE ***'
+#
+#         # FERRAMENTA PARA A DESMATRÍCULA
+#         def remocao_de_turmas_pendentes(self, codigo_escola):
+#             for key, value in self.turmas.items():
+#                 if value == codigo_escola:
+#                     del self.turmas[key]
+#                     return True
+#
+#             return False
+#
+#         def inserir_turma(self):
+#             entrada = input('Digite o código ou nome da instituição a qual pertence a turma: ')
+#             entrada = checar_tipo_de_entrada(entrada, 3)
+#
+#             for escola in range(len(self.instituicoes)):
+#                 codigo_escola = self.instituicoes[escola]
+#
+#                 if (entrada == codigo_escola["codigo"]) or (entrada == codigo_escola["escola"]):
+#                     turma = input('Digite o nome da turma: ')
+#                     turma = checar_tipo_de_entrada(turma, 1)
+#                     self.turmas.update({turma: codigo_escola})
+#
+#                     return '*** TURMA INSERIDA COM SUCESSO ***'
+#
+#             return '*** INSTITUIÇÃO INEXISTENTE ***'
+#
+#         # DISSOLVER TURMAS NA ESCOLA DO COORDENADOR
+#         def remover_turma(self):
+#             turma = input('Digite o nome da turma: ')
+#             turma = checar_tipo_de_entrada(turma, 1)
+#             if turma in self.turmas:
+#                 del self.turmas[turma]
+#                 return '*** TURMA REMOVIDA COM SUCESSO ***'
+#
+#             return '*** TURMA INEXISTENTE ***'
+#
+#         # INSERIR ALUNOS NAS TURMAS FUNDADAS
+#         def inserir_alunos_em_turma(self):
+#             turma = input('Digite o nome da turma a que pertence o aluno: ')
+#             turma = checar_tipo_de_entrada(turma, 1)
+#
+#             if turma in self.turmas:
+#                 arquivo_json = carregar_json(banco_de_alunos)
+#                 qntd_de_alunos = int(input('Digite a quantidade de alunos: '))
+#                 qntd_de_alunos = checar_tipo_de_entrada(qntd_de_alunos, 2)
+#
+#                 codigo_escola = input('Digite o nome ou código da escola a que o aluno pertence: ')
+#                 codigo_escola = checar_tipo_de_entrada(codigo_escola, 3)
+#
+#                 for contar in range(qntd_de_alunos):
+#                     nome = input('Digite o nome do aluno: ')
+#                     nome = checar_tipo_de_entrada(nome, 1)
+#
+#                     for aluno in range(len(arquivo_json)):
+#                         verificar = dict(arquivo_json[aluno])
+#                         r1 = True if nome in verificar["_nome"] else False
+#                         r2 = True if codigo_escola in verificar["instituicao"][0]["codigo"] else False
+#                         r3 = True if codigo_escola in verificar["instituicao"][0]["escola"] else False
+#
+#                         if r1 and (r2 or r3):
+#                             if nome in self.alunos:
+#                                 self.alunos[nome]["turma"].update({turma: {"notas": []}})
+#
+#                             self.alunos.update({nome: {"turma": {turma: {"notas": []}}}})
+#
+#                 return '*** ALUNO(S) INSERIDO(S) COM SUCESSO ***'
+#
+#             return '*** TURMA INEXISTENTE ***'
+#
+#         # REMOVER ALUNOS ESPECÍFICOS DAS TURMAS FUNDADAS
+#         def remover_alunos_especificos(self):
+#             aluno = input('Digite o nome do aluno: ')
+#             aluno = checar_tipo_de_entrada(aluno, 1)
+#             turma_a_remover = input('Digite a turma que deseja removê-lo(a): ')
+#             turma_a_remover = checar_tipo_de_entrada(turma_a_remover, 1)
+#
+#             turmas_do_aluno = self.turmas["turma"]
+#             for turma_atual in range(len(turmas_do_aluno)):
+#                 if turmas_do_aluno[turma_atual] == turma_a_remover:
+#                     del turmas_do_aluno[turma_atual]
+#
+#             if turmas_do_aluno is []:
+#                 del self.alunos[aluno]
+#
+#         def inserir_notas_gerais(self):
+#             turma = input('Digite a turma que deseja atualizar as notas: ')
+#             turma = checar_tipo_de_entrada(turma, 1)
+#             if turma in self.turmas:
+#                 qtd_de_provas = int(input('Digite a quantidade de notas: '))
+#                 qtd_de_provas = checar_tipo_de_entrada(qtd_de_provas, 2)
+#
+#                 for aluno in self.alunos:
+#                     aluno_atual = self.alunos[aluno]["turma"]
+#
+#                     for nota in range(qtd_de_provas):
+#                         turma_do_aluno = list(aluno_atual.keys())  # Isso aqui foi uma gambiarra
+#                         if turma_do_aluno[0] == turma:
+#                             dar_nota = input(f'Digite a {nota + 1}ª nota de aluno(a) {aluno}:\n-> ')
+#                             dar_nota = checar_tipo_de_entrada(dar_nota, 2)
+#                             aluno_atual[turma]["notas"].append(dar_nota)
+#
+#                 return '*** NOTAS INSERIDAS COM SUCESSO ***'
+#
+#             return '*** TURMA INEXISTENTE ***'
+#
+#         def reiniciar_notas_da_turma(self):
+#             turma = input('Digite a turma que deseja atualizar as notas: ')
+#             turma = checar_tipo_de_entrada(turma, 1)
+#             if turma in self.turmas:
+#                 for aluno in self.alunos:
+#                     aluno_atual = self.alunos[aluno]["turma"]
+#                     turma_do_aluno = list(aluno_atual.keys())  # Isso aqui foi uma gambiarra
+#
+#                     if turma_do_aluno[0] == turma:
+#                         aluno_atual[turma]["notas"].clear()
+#
+#                 return '*** NOTAS REMOVIDAS COM SUCESSO ***'
+#
+#             return '*** TURMA INEXISTENTE ***'
+#
+#         def editar_ou_remover_notas_individuais(self):
+#             turma = input('Digite a turma a que pertence o aluno: ')
+#             turma = checar_tipo_de_entrada(turma, 1)
+#             aluno = input('Digite o nome do aluno: ')
+#             aluno = checar_tipo_de_entrada(aluno, 1)
+#             if aluno in self.alunos:
+#                 entrada = input('Se quiser editar as notas, digite [S],\n'
+#                                 'caso contrário, digite [N] para remover.').title()
+#                 entrada = checar_tipo_de_entrada(entrada, 1).title()
+#
+#                 if entrada == "S":
+#                     self.alunos[aluno]["turma"][turma]["notas"].clear()
+#                     qtd_de_provas = int(input('Digite a quantidade de notas: '))
+#                     qtd_de_provas = checar_tipo_de_entrada(qtd_de_provas, 2)
+#                     aluno_atual = self.alunos[aluno]["turma"][turma]["notas"]
+#                     print(f'O tipo: {type(aluno_atual)}. E o conteúdo: {aluno_atual}')
+#
+#                     for nota in range(qtd_de_provas):
+#                         dar_nota = input(f'Digite a {nota + 1}ª nota de aluno(a) {aluno}:\n-> ')
+#                         dar_nota = checar_tipo_de_entrada(dar_nota, 2)
+#                         aluno_atual.append(dar_nota)
+#
+#                     return '*** NOTAS INSERIDAS COM SUCESSO'
+#
+#                 elif entrada == "N":
+#                     self.alunos[aluno]["turma"][turma]["notas"].clear()
+#
+#                     return '*** NOTAS REMOVIDAS COM SUCESSO ***'
+#
+#                 return '*** AÇÃO CANCELADA ***'
+#
+#             return '*** ALUNO INEXISTENTE ***'
