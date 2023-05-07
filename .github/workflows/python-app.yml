@@ -5,7 +5,7 @@ name: Python application
 defaults:
   run:
     shell: bash
-    working-directory: ./Sistema-Escolar
+    working-directory: ./school_system
 on:
   push:
     branches: [ "main" ]
