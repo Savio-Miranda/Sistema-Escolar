@@ -5,7 +5,7 @@ name: Python application
 defaults:
   run:
     shell: bash
-    working-directory: ./school_system
+    working-directory: Savio-Miranda/Sistema-Escolar
 on:
   push:
     branches: [ "main" ]
